@@ -34,8 +34,8 @@
             </div>
 
             <movie-row v-for="movie in movies" :key="movie.id"
-             :movie="movie" @on-selected-movie="onSelectedMovie"
-                :selectedMoviesIds="selectedMoviesIds" />
+             :movie="movie"  @on-selected-movie="onSelectedMovie"
+         :selectedMoviesIds="selectedMoviesIds" />
 
             <b-alert show variant="warning" v-if="!movies.length">
                 No Movies
@@ -95,13 +95,15 @@
                         this.movies = data
                     })
             },
-
-            onSelectedMovie(movie) {
-                if (this.selectedMoviesIds.indexOf(movie.id) > -1) {
-                    return;
-                }
-                this.selectedMoviesIds.push(movie.id)
-            },
+  // method for select and deselect single movie-row
+      onSelectedMovie(movie, isSelected) {
+      if (!isSelected) {
+        let movieIndex = this.selectedMoviesIds.indexOf(movie.id);
+        this.selectedMoviesIds.splice(movieIndex, 1);
+        return;
+      }
+      this.selectedMoviesIds.push(movie.id)
+    },
                selectAll(){
 this.selectedMoviesIds = this.movies.map((movie) => movie.id);
     },

@@ -6,10 +6,19 @@
         <!-- <div>
 <input class="form-control" v-model="searchTerm" type="text" placeholder="Search movie title" />
 <div v-for="movie in filterMovies" :key="movie.id" v-text="movie.title"/>
+ <div v-if="!filterMovies.length" class="alert alert-danger" role="alert">
+            This movie title is not included in the list of movies!
+        </div>
+
 </div> -->
         <div class="container">
 
-            <movie-row v-for="movie in movies" :key="movie.id" :movie="movie" />
+        <movie-row v-for="movie in movies" :key="movie.id" :movie="movie" />
+         <div v-if="!movies.length" class="alert alert-danger" role="alert">
+            There are no movies on the list!
+        </div>
+
+        
         </div>
 
     </div>

@@ -11,14 +11,18 @@
         </div>
 
 </div> -->
-        <div class="container">
+        <div class="pt-3">
+            <b-badge pill variant="primary" v-if="movies.length">
+                Selected: {{ selectedMoviesCounter }}
+            </b-badge>
 
-        <movie-row v-for="movie in movies" :key="movie.id" :movie="movie" />
-         <div v-if="!movies.length" class="alert alert-danger" role="alert">
-            There are no movies on the list!
-        </div>
+            <movie-row v-for="movie in movies" :key="movie.id" 
+            :movie="movie" @on-selected-movie="onSelectedMovie"/>
 
-        
+            <b-alert show variant="warning" v-if="!movies.length">
+                There are no movies on the list!
+            </b-alert>
+
         </div>
 
     </div>
@@ -43,7 +47,8 @@
         data() {
             return {
                 // movies:[]
-                searchTerm: ""
+                searchTerm: "",
+                selectedMoviesIds: [],
             }
         },
         computed: {
@@ -57,7 +62,9 @@
             //             .startsWith(this.searchTerm.toLowerCase())
             //     })
             // }
-
+            selectedMoviesCounter() {
+                return this.selectedMoviesIds.length
+            }
         },
         methods: {
             ...mapActions([
@@ -71,6 +78,13 @@
                     }) => {
                         this.movies = data
                     })
+            },
+
+            onSelectedMovie(movie) {
+                if (this.selectedMoviesIds.indexOf(movie.id) > -1) {
+                    return;
+                }
+                this.selectedMoviesIds.push(movie.id)
             }
         },
         beforeRouteEnter(to, from, next) {

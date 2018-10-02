@@ -1,7 +1,6 @@
 <template>
     <div class="container">
         <h3 class="text-center">All Movies</h3>
-        <movie-search @search-term-change="onSearchTermChanged" class="mt-4" />
         <!-- <div>
 <input class="form-control" v-model="searchTerm" type="text" placeholder="Search movie title" />
 <div v-for="movie in filterMovies" :key="movie.id" v-text="movie.title"/>
@@ -66,7 +65,7 @@
     import MoviesService from "./../services/MoviesService"
     import MovieRow from "./../components/MovieRow.vue"
     import MoviePaginator from "./../components/MoviePaginator.vue"
-    import MovieSearch from './../components/MovieSearch.vue'
+
     import {
         mapGetters,
         mapActions
@@ -77,7 +76,7 @@
 
         components: {
             MovieRow,
-            MovieSearch,
+
             MoviePaginator
         },
         data() {

@@ -23,11 +23,11 @@
                 type: Object,
                 required: true
             },
-             selectedMoviesIds: {
-      type: Array,
-      required: true,
-      default: () => []
-    }
+            selectedMoviesIds: {
+                type: Array,
+                required: true,
+                default: () => []
+            }
         },
         // data() {
         //     return {
@@ -35,11 +35,11 @@
         //     }
         // },
         computed: {
-    selected() {
-      return this.selectedMoviesIds
-        .indexOf(this.movie.id) > -1;
-    }
-  },
+            selected() {
+                return this.selectedMoviesIds
+                    .indexOf(this.movie.id) > -1;
+            }
+        },
         methods: {
             onSelected() {
                 this.$emit('on-selected-movie', this.movie, !this.selected)

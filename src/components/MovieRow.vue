@@ -1,5 +1,5 @@
 <template>
-    <div class="row" :class="{ 'highlighted text-white': selected }">
+    <div class="row p-2 mb-1" :class="{ 'highlighted text-white': selected }">
         <div class="col-sm" v-text="movie.id"></div>
         <div class="col-sm" v-text="movie.title"></div>
         <div class="col-sm" v-text="movie.director"></div>
@@ -22,16 +22,26 @@
             movie: {
                 type: Object,
                 required: true
-            }
+            },
+             selectedMoviesIds: {
+      type: Array,
+      required: true,
+      default: () => []
+    }
         },
-        data() {
-            return {
-                selected: false
-            }
-        },
+        // data() {
+        //     return {
+        //         selected: false
+        //     }
+        // },
+        computed: {
+    selected() {
+      return this.selectedMoviesIds
+        .indexOf(this.movie.id) > -1;
+    }
+  },
         methods: {
             onSelected() {
-                this.selected = true
                 this.$emit('on-selected-movie', this.movie)
             }
         }

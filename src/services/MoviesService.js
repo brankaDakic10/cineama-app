@@ -10,6 +10,8 @@ const axios = Axios.create({
  
   getAll() {
     return axios.get(ENDPOINTS.MOVIES)
+  },
+  store: function (movie) {
+    return axios.post(ENDPOINTS.MOVIES, movie)
   }
-  
 }

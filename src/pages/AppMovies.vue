@@ -89,7 +89,8 @@
         },
         computed: {
             ...mapGetters({
-                movies: "getMovies"
+                movies: "getMovies",
+                currentTerm: 'getSearchTerm',
             }),
             // filterMovies() {
             //     return this.movies.filter(movie => {

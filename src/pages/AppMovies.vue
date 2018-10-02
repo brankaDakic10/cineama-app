@@ -29,6 +29,37 @@
                     <b-button size="sm" variant="primary" class="float-right mr-1" @click="selectAll">
                         Select All
                     </b-button>
+                     <!-- dropdown button with options -->
+           <b-dropdown
+            class="float-right mr-1"
+            size="sm"
+            text="Sort By"
+          >
+          <!-- by title -->
+            <b-dropdown-item
+              @click="sortBy('title', 'asc')"
+            >
+              Movie Title ASC
+            </b-dropdown-item>
+            <b-dropdown-item
+              @click="sortBy('title', 'desc')"
+            >
+             Movie Title DESC
+            </b-dropdown-item>
+            <b-dropdown-divider></b-dropdown-divider>
+            <!-- by duration-->
+            <b-dropdown-item
+              @click="sortBy('duration', 'asc')"
+            >
+             Movie Duration ASC
+            </b-dropdown-item>
+            <b-dropdown-item
+              @click="sortBy('duration', 'desc')"
+            >
+             Movie Duration DESC
+            </b-dropdown-item>
+</b-dropdown>
+<!-- end dropdown -->
                 </div>
                 <!-- end buttons div -->
             </div>
@@ -88,7 +119,7 @@
             ]),
 
             onSearchTermChanged(term) {
-                MoviesService.getAll(term)
+                MoviesService.index(term)
                     .then(({
                         data
                     }) => {
@@ -109,6 +140,14 @@ this.selectedMoviesIds = this.movies.map((movie) => movie.id);
     },
     deselectAll(){
        this.selectedMoviesIds = []; 
+    },
+
+     sortBy(prop, order) {
+      let orderCoefficient = order === 'asc' ? 1 : -1;
+      this.movies = this.movies.sort((movie1, movie2) => {
+        return movie1[prop] >= movie2[prop] ?
+          orderCoefficient : -orderCoefficient
+      })
     }
         },
         beforeRouteEnter(to, from, next) {

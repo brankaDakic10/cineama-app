@@ -23,7 +23,7 @@ export const store = new Vuex.Store({
         async fetchMovies(store) {
             const {
                 data
-            } = await MoviesService.getAll();
+            } = await MoviesService.index();
             store.commit('setMovies', data);
         },
 

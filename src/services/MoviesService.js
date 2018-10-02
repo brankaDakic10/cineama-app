@@ -8,7 +8,7 @@ const axios = Axios.create({
 }
  export default {
  
-    getAll(term="") {
+    index(term="") {
         return axios.get(ENDPOINTS.MOVIES, {
           params: {
             term

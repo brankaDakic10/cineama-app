@@ -9,6 +9,7 @@ export const store = new Vuex.Store({
     state: {
         movies: [],
         searchTerm: '',
+        isAuthenticated: false
     },
     getters: {
         getMovies(state) {
@@ -16,7 +17,10 @@ export const store = new Vuex.Store({
         },
         getSearchTerm(state) {
             return state.searchTerm
-          },
+        },
+        getIsAuthenticated(state) {
+            return state.isAuthenticated;
+        }
     },
     mutations: {
         setMovies(state, movies) {
@@ -24,7 +28,10 @@ export const store = new Vuex.Store({
         },
         setSearchTerm(state, searchTerm) {
             state.searchTerm = searchTerm
-          },
+        },
+        setIsAuthenticated(state, auth) {
+            state.isAuthenticated = auth;
+        }
     },
     actions: {
         // async fetchMovies(store) {
@@ -35,13 +42,15 @@ export const store = new Vuex.Store({
         // },
 
         fetchMovies(store) {
-            MoviesService.index().then(({ data }) => {
-              let movies = data.map((movie) => {
-                movie.duration = Number(movie.duration)
-                return movie
-              })
-              store.commit('setMovies', movies)
+            MoviesService.index().then(({
+                data
+            }) => {
+                let movies = data.map((movie) => {
+                    movie.duration = Number(movie.duration)
+                    return movie
+                })
+                store.commit('setMovies', movies)
             })
-          }
         }
-      })
+    }
+})

@@ -1,7 +1,8 @@
 <template>
-    <div>
-        <h4 class="text-center">Login please</h4>
+    <div class="container">
+       
         <form @submit.prevent="onSubmit" class="jumbotron">
+             <h4 class="text-center mb-4">Login please</h4>
              <div class="form-group row">
                 <label for="email" class="col-4 col-form-label">Email</label>
                 <div class="col-8">
@@ -15,12 +16,12 @@
                 </div>
             </div>
              <div class="form-group row">
-                 <div class="offset-4 col-8">
+                 <div class="offset-10 col-12">
                     <!-- errors from server -->
                     <div v-for="(error, key) in errors" :key="key" v-if="error" class="alert alert-danger">
                         {{error}}
                     </div>
-                     <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+                     <button name="submit" type="submit" class="btn  btn-primary">Login</button>
                 </div>
             </div>
         </form>

@@ -40,9 +40,12 @@
             <b-form-group label="Genre:">
                 <b-form-input type="text" v-model="movieForm.genre" placeholder="Enter genre">
                 </b-form-input>
+                
             </b-form-group>
+            <div class="offset-10 col-12">
             <b-button type="reset" variant="danger">Reset</b-button>
             <b-button type="submit" variant="success">Submit</b-button>
+            </div>
         </b-form>
     </div>
 </template>

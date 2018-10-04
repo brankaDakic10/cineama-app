@@ -10,6 +10,8 @@
 
                 <div class="navbar-nav">
                     <router-link class="nav-item nav-link" :to="{name: 'login'}" v-if="!isAuthenticated">Login</router-link>
+         <router-link class="nav-item nav-link" :to="{name: 'register'}" v-if="!isAuthenticated">Register</router-link>
+
                     <a href="#" class="nav-item nav-link" @click="logout" v-if="isAuthenticated">LogOut</a>
 
                 </div>

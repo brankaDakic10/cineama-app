@@ -1,7 +1,9 @@
 <template>
     <div class="row p-2 mb-1" :class="{ 'highlighted text-white': selected }">
         <div class="col-sm" v-text="movie.id"></div>
-        <div class="col-sm" v-text="movie.title"></div>
+        <router-link :to="{ name: 'movie', params: {id: movie.id}}">
+            <div class="col-sm" v-text="movie.title"></div>
+        </router-link>
         <div class="col-sm" v-text="movie.director"></div>
         <div class="col-sm" v-text="movie.genre"></div>
         <div class="col-sm" v-text="movie.releaseDate"></div>

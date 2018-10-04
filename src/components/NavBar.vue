@@ -51,7 +51,11 @@
             logout() {
                 authService.logout();
                 this.setIsAuthenticated(false);
+            },
+            setSearchTerm(term){
+                this.setSearchTerm(term);
             }
+            
         },
 
         

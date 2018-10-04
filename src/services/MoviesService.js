@@ -15,7 +15,11 @@ const axios = Axios.create({
           }
         })
     },
-  store: function (movie) {
+  store(movie) {
     return axios.post(ENDPOINTS.MOVIES, movie)
+  },
+  getMovie(id){
+    return axios.get(`/movies/${id}`)
   }
+
 }

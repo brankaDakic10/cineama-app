@@ -40,7 +40,7 @@ export const store = new Vuex.Store({
         //     } = await MoviesService.index();
         //     store.commit('setMovies', data);
         // },
-
+     
         fetchMovies(store) {
             MoviesService.index().then(({
                 data

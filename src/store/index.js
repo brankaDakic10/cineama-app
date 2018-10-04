@@ -2,6 +2,9 @@ import Vue from "vue"
 import Vuex from "vuex"
 
 import MoviesService from "./../services/MoviesService"
+import {
+    authService
+  } from "../services/AuthService";
 Vue.use(Vuex)
 
 
@@ -9,7 +12,7 @@ export const store = new Vuex.Store({
     state: {
         movies: [],
         searchTerm: '',
-        isAuthenticated: false
+        isAuthenticated: authService.isAuthenticated
     },
     getters: {
         getMovies(state) {

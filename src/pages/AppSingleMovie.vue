@@ -1,7 +1,7 @@
 <template>
 
   <div class="col-md-6 offset-md-3 mt-4">
-    <div class="card" style="width: 32rem;">
+    <div class="card" style="width: 30rem;">
       <img class="card-img-top" :src="movie.imageUrl" alt="Card image cap">
       <div class="card-body">
         

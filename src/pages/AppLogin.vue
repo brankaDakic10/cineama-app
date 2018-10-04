@@ -15,12 +15,17 @@
                     <input id="password" name="password" type="password" class="form-control here" v-model="password">
                 </div>
             </div>
+            <div class="form-group row">
+              <div 
+              v-for="(error, key) in errors" :key="key" v-if="error" 
+              class="offset-4 col-8 alert alert-danger">
+                        {{error}}
+                    </div>
+            </div>
              <div class="form-group row">
                  <div class="offset-10 col-12">
                     <!-- errors from server -->
-                    <div v-for="(error, key) in errors" :key="key" v-if="error" class="alert alert-danger">
-                        {{error}}
-                    </div>
+                  
                      <button name="submit" type="submit" class="btn  btn-primary">Login</button>
                 </div>
             </div>
